@@ -87,18 +87,18 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   },
   {
-    title: 'TESTING',
+    title: 'TEST',
     date: 'Dec 4th, 2019',
-    firstParagraph: `Hodor2 hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
           hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
           Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
 
-    secondParagraph: `Hodor2, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor2, hodor hodor. Hodor! Hodor hodor, hodor;
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
           hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
           hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
           hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
 
-    thirdParagraph: `Hodor2 hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
@@ -132,11 +132,7 @@ function articlesCreator(title, date, first, second, third) {
 
   // set class names
   article.classList.add("article", "article-open");
-  // tit.classList.add("title");
   dateStamp.classList.add("date");
-  // paragraphOne.classList.add("para1");
-  // paragraphTwo.classList.add("para2");
-  // paragraphThree.classList.add("para3");
   button.classList.add("expandButton");
 
   // append child
@@ -165,34 +161,16 @@ function articlesCreator(title, date, first, second, third) {
 
 const articles = document.querySelector(".articles");
 
-data.forEach( blog => {
+data.map( blog => {
   articles.appendChild(articlesCreator(blog.title, blog.date, blog.firstParagraph, blog.secondParagraph, blog.thirdParagraph));
 });
-
-
-let step4 = data.map((item) => {
-  let component = articlesCreator(item);
-
-  return component;
-});
-
-step4.forEach(item => {
-  articles.appendChild(item);
-})
-
-// let map = data.map((item) => {
-//   let test = item.createElement("div").textContent = "TESTING";
-//   article.appendChild(test);
-//   return test
-// });
-
 
   /*Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div. ✅
 
   Step 3: return the entire component. ✅
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div. ✅
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article. ✅
 
 */
