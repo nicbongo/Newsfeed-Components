@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'TESTING',
+    date: 'Dec 4th, 2019',
+    firstParagraph: `Hodor2 hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor2, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor2, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor2 hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -101,11 +117,79 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above. */
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Step 3: return the entire component.
+function articlesCreator(title, date, first, second, third) {
+  // define new elements
+  const article = document.createElement("div");
+  const tit = document.createElement("h2");
+  const dateStamp = document.createElement("p");
+  const paragraphOne = document.createElement("p");
+  const paragraphTwo = document.createElement("p");
+  const paragraphThree = document.createElement("p");
+  const button = document.createElement("span");
+
+  // set class names
+  article.classList.add("article", "article-open");
+  // tit.classList.add("title");
+  dateStamp.classList.add("date");
+  // paragraphOne.classList.add("para1");
+  // paragraphTwo.classList.add("para2");
+  // paragraphThree.classList.add("para3");
+  button.classList.add("expandButton");
+
+  // append child
+  article.appendChild(tit);
+  article.appendChild(dateStamp);
+  article.appendChild(paragraphOne);
+  article.appendChild(paragraphTwo);
+  article.appendChild(paragraphThree);
+  article.appendChild(button);
+
+  // assign text content
+
+  tit.textContent = title;
+  dateStamp.textContent = date;
+  paragraphOne.textContent = first;
+  paragraphTwo.textContent = second;
+  paragraphThree.textContent = third;
+  button.textContent = "EXPAND";
+
+  button.addEventListener("click", e => {
+        article.classList.toggle("article-open");
+  });
+
+  return article  
+};
+
+const articles = document.querySelector(".articles");
+
+data.forEach( blog => {
+  articles.appendChild(articlesCreator(blog.title, blog.date, blog.firstParagraph, blog.secondParagraph, blog.thirdParagraph));
+});
+
+
+let step4 = data.map((item) => {
+  let component = articlesCreator(item);
+
+  return component;
+});
+
+step4.forEach(item => {
+  articles.appendChild(item);
+})
+
+// let map = data.map((item) => {
+//   let test = item.createElement("div").textContent = "TESTING";
+//   article.appendChild(test);
+//   return test
+// });
+
+
+  /*Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div. ✅
+
+  Step 3: return the entire component. ✅
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
